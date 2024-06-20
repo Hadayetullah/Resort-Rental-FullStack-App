@@ -1,17 +1,5 @@
 
-
-# services:
-#   web:
-#     build: ./resort-rental-backend
-#     command: python manage.py runserver 0.0.0.0:8000
-#     volumes:
-#       - ./resort-rental-backend/:/usr/src/resort-rental-backend/
-#     ports:
-#       - 8000:8000
-#     env_file:
-#       - ./.env.dev
-
-version: '3.8'
+# version: '3.8'
 
 services:
   web:
@@ -23,3 +11,17 @@ services:
       - 8000:8000
     env_file:
       - ./.env.dev
+    depends_on:
+      - db
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgresuser
+      - POSTGRES_PASSWORD=postgrespassword
+      - POSTGRESS_DB=resortrental
+
+volumes:
+  postgres_data:
+
