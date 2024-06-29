@@ -24,7 +24,7 @@ AUTH_USER_MODEL = 'app_useraccount.User'
 
 SITE_ID = 1
 
-WEBSITE_URL = 'https://localhost:8000'
+WEBSITE_URL = 'http://localhost:8000'
 
 
 SIMPLE_JWT = {
@@ -58,7 +58,10 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'https://127.0.0.1:8000',
     'https://127.0.0.1:3000',
+    'http://localhost:3000',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 REST_AUTH = {
