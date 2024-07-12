@@ -48,7 +48,7 @@ const SignupModal = (props: Props) => {
 
   const content = (
     <>
-      <form className="space-y-4">
+      <form className="space-y-4" action={submitSignup}>
         <input
           onChange={(e) => setEmail(e.target.value)}
           type="email"
