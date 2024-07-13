@@ -1,4 +1,4 @@
-"user client";
+"use client";
 
 import { useRouter } from "next/navigation";
 import { resetAuthCookies } from "../lib/actions";
