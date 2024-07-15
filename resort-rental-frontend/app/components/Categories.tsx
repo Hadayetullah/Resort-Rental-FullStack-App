@@ -6,18 +6,18 @@ const Categories = () => {
       <div className="pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 border-white opacity-60 hover:border-gray-200 hover:opacity-100">
         <Image
           src={"/icon_category.jpg"}
-          alt="Pool - Category"
+          alt="Category - Beach"
           width={20}
           height={20}
         />
 
-        <span className="text-xs">Amazing pools</span>
+        <span className="text-xs">Beach</span>
       </div>
 
       <div className="pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 border-white opacity-60 hover:border-gray-200 hover:opacity-100">
         <Image
           src={"/icon_category.jpg"}
-          alt="Pool - Category"
+          alt="Category - Villas"
           width={20}
           height={20}
         />
@@ -28,7 +28,7 @@ const Categories = () => {
       <div className="pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 border-white opacity-60 hover:border-gray-200 hover:opacity-100">
         <Image
           src={"/icon_category.jpg"}
-          alt="Pool - Category"
+          alt="Category - Cabins"
           width={20}
           height={20}
         />
@@ -39,12 +39,12 @@ const Categories = () => {
       <div className="pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 border-white opacity-60 hover:border-gray-200 hover:opacity-100">
         <Image
           src={"/icon_category.jpg"}
-          alt="Pool - Category"
+          alt="Category - Tiny homes"
           width={20}
           height={20}
         />
 
-        <span className="text-xs">Tiny houses</span>
+        <span className="text-xs">Tiny homes</span>
       </div>
     </div>
   );
