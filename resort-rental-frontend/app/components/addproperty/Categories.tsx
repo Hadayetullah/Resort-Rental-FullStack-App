@@ -14,7 +14,9 @@ const Categories: React.FC<CategoriesProps> = ({
       <div className="pt-3 pb-6 flex items-center space-x-12">
         <div
           onClick={() => setCategory("Beach")}
-          className="pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 border-white opacity-60 hover:border-gray-200 hover:opacity-100"
+          className={`pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 ${
+            dataCategory === "Beach" ? "border-gray-800" : "border-white"
+          } opacity-60 hover:border-gray-200 hover:opacity-100`}
         >
           <Image
             src={"/icon_category.jpg"}
@@ -28,7 +30,9 @@ const Categories: React.FC<CategoriesProps> = ({
 
         <div
           onClick={() => setCategory("Villas")}
-          className="pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 border-white opacity-60 hover:border-gray-200 hover:opacity-100"
+          className={`pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 ${
+            dataCategory === "Villas" ? "border-gray-800" : "border-white"
+          } opacity-60 hover:border-gray-200 hover:opacity-100`}
         >
           <Image
             src={"/icon_category.jpg"}
@@ -42,7 +46,9 @@ const Categories: React.FC<CategoriesProps> = ({
 
         <div
           onClick={() => setCategory("Cabins")}
-          className="pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 border-white opacity-60 hover:border-gray-200 hover:opacity-100"
+          className={`pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 ${
+            dataCategory === "Cabins" ? "border-gray-800" : "border-white"
+          } opacity-60 hover:border-gray-200 hover:opacity-100`}
         >
           <Image
             src={"/icon_category.jpg"}
@@ -56,7 +62,9 @@ const Categories: React.FC<CategoriesProps> = ({
 
         <div
           onClick={() => setCategory("Tiny homes")}
-          className="pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 border-white opacity-60 hover:border-gray-200 hover:opacity-100"
+          className={`pb-4 space-y-2 flex flex-col items-center cursor-pointer border-b-2 ${
+            dataCategory === "Tiny homes" ? "border-gray-800" : "border-white"
+          } opacity-60 hover:border-gray-200 hover:opacity-100`}
         >
           <Image
             src={"/icon_category.jpg"}
