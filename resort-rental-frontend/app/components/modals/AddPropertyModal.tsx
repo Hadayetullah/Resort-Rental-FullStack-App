@@ -15,6 +15,10 @@ const AddPropertyModal = () => {
   const [dataCategory, setDataCategory] = useState("");
   const [dataTitle, setDataTitle] = useState("");
   const [dataDescription, setDataDescription] = useState("");
+  const [dataPrice, setDataPrice] = useState("");
+  const [dataBedrooms, setDataBedrooms] = useState("");
+  const [dataBathrooms, setDataBathrooms] = useState("");
+  const [dataGuests, setDataGuests] = useState("");
 
   //
   //
@@ -78,6 +82,68 @@ const AddPropertyModal = () => {
           />
 
           <CustomButton label="Next" onClick={() => setCurrentStep(3)} />
+        </>
+      ) : currentStep === 3 ? (
+        <>
+          <h2 className="mb-6 text-2xl">Details</h2>
+
+          <div className="pt-3 pb-6 space-y-4">
+            <div className="flex flex-col space-y-2">
+              <label htmlFor="price">Price per night</label>
+
+              <input
+                type="text"
+                name="price"
+                value={dataPrice}
+                onChange={(e) => setDataPrice(e.target.value)}
+                className="w-full p-4 border border-gray-600 rounded-xl"
+              />
+            </div>
+
+            <div className="flex flex-col space-y-2">
+              <label htmlFor="bedrooms">Bedrooms</label>
+
+              <input
+                type="text"
+                name="bedrooms"
+                value={dataBedrooms}
+                onChange={(e) => setDataBathrooms(e.target.value)}
+                className="w-full p-4 border border-gray-600 rounded-xl"
+              />
+            </div>
+
+            <div className="flex flex-col space-y-2">
+              <label htmlFor="Bathrooms">Bathrooms</label>
+
+              <input
+                type="text"
+                name="Bathrooms"
+                value={dataBathrooms}
+                onChange={(e) => setDataBathrooms(e.target.value)}
+                className="w-full p-4 border border-gray-600 rounded-xl"
+              />
+            </div>
+
+            <div className="flex flex-col space-y-2">
+              <label htmlFor="Guests">Maximum number of guests</label>
+
+              <input
+                type="text"
+                name="Guests"
+                value={dataGuests}
+                onChange={(e) => setDataGuests(e.target.value)}
+                className="w-full p-4 border border-gray-600 rounded-xl"
+              />
+            </div>
+          </div>
+
+          <CustomButton
+            className="mb-2 bg-black hover:bg-gray-800"
+            label="Previous"
+            onClick={() => setCurrentStep(2)}
+          />
+
+          <CustomButton label="Next" onClick={() => setCurrentStep(4)} />
         </>
       ) : (
         <p>asdf</p>
