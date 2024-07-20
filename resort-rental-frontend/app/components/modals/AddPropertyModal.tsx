@@ -7,6 +7,7 @@ import useAddPropertyModal from "@/app/hooks/useAddPropertyModal";
 import { useState } from "react";
 import CustomButton from "../forms/CustomButton";
 import Categories from "../addproperty/Categories";
+import SelectCountry, { SelectCountryValue } from "../forms/SelectCountry";
 
 const AddPropertyModal = () => {
   //
@@ -19,6 +20,7 @@ const AddPropertyModal = () => {
   const [dataBedrooms, setDataBedrooms] = useState("");
   const [dataBathrooms, setDataBathrooms] = useState("");
   const [dataGuests, setDataGuests] = useState("");
+  const [dataCountry, setDataCountry] = useState<SelectCountryValue>();
 
   //
   //
@@ -144,6 +146,25 @@ const AddPropertyModal = () => {
           />
 
           <CustomButton label="Next" onClick={() => setCurrentStep(4)} />
+        </>
+      ) : currentStep === 4 ? (
+        <>
+          <h2 className="mb-6 text-2xl">Location</h2>
+
+          <div className="pt-3 pb-6 space-y-4">
+            <SelectCountry
+              value={dataCountry}
+              onChange={(value) => setDataCountry(value as SelectCountryValue)}
+            />
+          </div>
+
+          <CustomButton
+            className="mb-2 bg-black hover:bg-gray-800"
+            label="Previous"
+            onClick={() => setCurrentStep(3)}
+          />
+
+          <CustomButton label="Next" onClick={() => setCurrentStep(5)} />
         </>
       ) : (
         <p>asdf</p>
