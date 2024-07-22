@@ -16,6 +16,7 @@ const AddPropertyModal = () => {
   //
   // States
   const [currentStep, setCurrentStep] = useState(1);
+  const [errors, setErrors] = useState<string[]>([]);
   const [dataCategory, setDataCategory] = useState("");
   const [dataTitle, setDataTitle] = useState("");
   const [dataDescription, setDataDescription] = useState("");
@@ -83,6 +84,14 @@ const AddPropertyModal = () => {
         addPropertyModal.close();
       } else {
         console.log("Error");
+
+        const tmpErrors: string[] = Object.values(response).map(
+          (error: any) => {
+            return error;
+          }
+        );
+
+        setErrors(tmpErrors);
       }
     }
   };
@@ -241,6 +250,17 @@ const AddPropertyModal = () => {
               </div>
             )}
           </div>
+
+          {errors.map((error, index) => {
+            return (
+              <div
+                key={index}
+                className="p-5 mb-4 secondary text-white rounded-xl opacity-80"
+              >
+                {error}
+              </div>
+            );
+          })}
 
           <CustomButton
             className="mb-2 bg-black hover:bg-gray-800"
