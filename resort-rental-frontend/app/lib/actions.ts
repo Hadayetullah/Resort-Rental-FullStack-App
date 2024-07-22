@@ -41,3 +41,10 @@ export async function getUserId() {
 
     return userId ? userId : null;
 }
+
+
+export async function getAccessToken() {
+    let accessToken = cookies().get('session_access_token')?.value;
+
+    return accessToken;
+}

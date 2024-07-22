@@ -25,7 +25,7 @@ const LoginModal = (props: Props) => {
       password: password,
     };
 
-    const response = await apiService.post(
+    const response = await apiService.postWithToken(
       "/api/auth/login/",
       JSON.stringify(formData)
     );
