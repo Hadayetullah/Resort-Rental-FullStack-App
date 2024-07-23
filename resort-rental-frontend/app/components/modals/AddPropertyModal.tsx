@@ -158,7 +158,7 @@ const AddPropertyModal = () => {
               <label htmlFor="price">Price per night</label>
 
               <input
-                type="text"
+                type="number"
                 name="price"
                 value={dataPrice}
                 onChange={(e) => setDataPrice(e.target.value)}
@@ -170,7 +170,7 @@ const AddPropertyModal = () => {
               <label htmlFor="bedrooms">Bedrooms</label>
 
               <input
-                type="text"
+                type="number"
                 name="bedrooms"
                 value={dataBedrooms}
                 onChange={(e) => setDataBathrooms(e.target.value)}
@@ -182,7 +182,7 @@ const AddPropertyModal = () => {
               <label htmlFor="Bathrooms">Bathrooms</label>
 
               <input
-                type="text"
+                type="number"
                 name="Bathrooms"
                 value={dataBathrooms}
                 onChange={(e) => setDataBathrooms(e.target.value)}
@@ -194,7 +194,7 @@ const AddPropertyModal = () => {
               <label htmlFor="Guests">Maximum number of guests</label>
 
               <input
-                type="text"
+                type="number"
                 name="Guests"
                 value={dataGuests}
                 onChange={(e) => setDataGuests(e.target.value)}
