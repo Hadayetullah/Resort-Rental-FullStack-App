@@ -44,3 +44,15 @@ def create_property(request):
     else:
         print("Error: ", form.errors, form.non_field_errors)
         return JsonResponse({'errors', form.errors.as_json()}, status=400)
+    
+
+
+
+@api_view(['POST'])
+def book_property(request, pk):
+    try:
+        start_date = request.POST.get('start_date', '')
+        end_date = request.POST.get('end_date', '')
+    except Exception as e:
+        print("Error", e)
+        return JsonResponse({"Success": False})

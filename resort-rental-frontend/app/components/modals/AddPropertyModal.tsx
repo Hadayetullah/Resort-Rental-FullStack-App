@@ -173,7 +173,7 @@ const AddPropertyModal = () => {
                 type="number"
                 name="bedrooms"
                 value={dataBedrooms}
-                onChange={(e) => setDataBathrooms(e.target.value)}
+                onChange={(e) => setDataBedrooms(e.target.value)}
                 className="w-full p-4 border border-gray-600 rounded-xl"
               />
             </div>
@@ -268,7 +268,7 @@ const AddPropertyModal = () => {
             onClick={() => setCurrentStep(4)}
           />
 
-          <CustomButton label="Next" onClick={submitForm} />
+          <CustomButton label="Submit" onClick={submitForm} />
         </>
       )}
     </>
