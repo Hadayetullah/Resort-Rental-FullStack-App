@@ -1,7 +1,7 @@
 "use client";
 
 import { Range } from "react-date-range";
-import { differenceInDays } from "date-fns";
+import { differenceInDays, eachDayOfInterval, format } from "date-fns";
 
 import DatePicker from "../forms/Calender";
 
@@ -59,6 +59,36 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
     });
   };
 
+  const performBooking = async () => {
+    if (userId) {
+      if (dateRange.startDate && dateRange.endDate) {
+        const formData = new FormData();
+
+        formData.append("guests", guests);
+        formData.append(
+          "start_date",
+          format(dateRange.startDate, "yyyy-MM-dd")
+        );
+        formData.append("end_date", format(dateRange.endDate, "yyyy-MM-dd"));
+        formData.append("number_of_nights", nights.toString());
+        formData.append("total_price", totalPrice.toString());
+
+        const response = await apiService.post(
+          `/api/properties/${property.id}/book/`,
+          formData
+        );
+
+        if (response.success) {
+          console.log("Booking successful");
+        } else {
+          console.log("Something went wrong...");
+        }
+      }
+    } else {
+      loginModal.open();
+    }
+  };
+
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
       const dayCount = differenceInDays(dateRange.endDate, dateRange.startDate);
@@ -108,7 +138,10 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
         </select>
       </div>
 
-      <div className="w-full mb-6 py-6 text-center text-white bg-primary rounded-xl hover:bg-secondary">
+      <div
+        onClick={performBooking}
+        className="w-full mb-6 py-6 text-center text-white bg-primary rounded-xl hover:bg-secondary cursor-pointer"
+      >
         Book
       </div>
 

@@ -68,6 +68,9 @@ def book_property(request, pk):
             total_price=total_price,
             created_by=request.user
         )
+
+        return JsonResponse({"success": True})
+    
     except Exception as e:
         print("Error", e)
-        return JsonResponse({"Success": False})
+        return JsonResponse({"success": False})
