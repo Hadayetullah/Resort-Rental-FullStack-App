@@ -38,7 +38,7 @@ def property_reservations(request, pk):
     reservations = property.reservations.all()
 
     serializer = ReservationListSerializer(reservations, many=True)
-    return JsonResponse(serializer.data)
+    return JsonResponse(serializer.data , safe=False)
 
 
 
