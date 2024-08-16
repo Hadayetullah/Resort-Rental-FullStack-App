@@ -1,8 +1,16 @@
 import ContactButton from "@/app/components/ContactButton";
 import PropertyList from "@/app/components/properties/PropertyList";
+import { getUserId } from "@/app/lib/actions";
+import apiService from "@/app/services/apiService";
 import Image from "next/image";
 
-const LandlordDetailPage = () => {
+const LandlordDetailPage = async ({ params }: { params: { id: string } }) => {
+  const landlord = await apiService.get(`/api/auth/${params.id}`);
+  const userId = await getUserId();
+
+  // console.log("Params: ", params);
+  // console.log("User Id: ", userId);
+
   return (
     <main className="max-w-[1500px] mx-auto px-6 pb-6">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
