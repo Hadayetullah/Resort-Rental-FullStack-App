@@ -94,3 +94,21 @@ def book_property(request, pk):
     except Exception as e:
         print("Error", e)
         return JsonResponse({"success": False})
+    
+
+
+
+@api_view(['POST'])
+def toggle_favorite(request, pk):
+    property = Property.objects.get(pk=pk)
+
+    if request.user in property.favorited.all():
+        print("Property: ", property)
+        print("User: ", request.user)
+        print("All favorited: ", property.favorited.all())
+        property.favorited.remove(request.user)
+
+        return JsonResponse({'is_favorited': False})
+    else:
+        property.favorited.add(request.user)
+        return JsonResponse({'is_favorited': True})
