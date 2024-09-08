@@ -70,7 +70,7 @@ const PropertyList: React.FC<PropertyListProps> = ({ landlord_id }) => {
           <PropertyListItem
             key={property.id}
             property={property}
-            markFavorite={(is_favorite: any) =>
+            markFavorite={(is_favorite: boolean) =>
               markFavorite(property.id, is_favorite)
             }
           />

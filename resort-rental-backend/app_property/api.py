@@ -133,10 +133,9 @@ def toggle_favorite(request, pk):
 
     if request.user in property.favorited.all():
         property.favorited.remove(request.user)
-        print("False")
-
+        
         return JsonResponse({'is_favorited': False})
+    
     else:
         property.favorited.add(request.user)
-        print("True")
         return JsonResponse({'is_favorited': True})

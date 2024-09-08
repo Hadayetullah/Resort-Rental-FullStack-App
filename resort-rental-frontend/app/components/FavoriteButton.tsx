@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import apiService from "../services/apiService";
 
@@ -16,7 +18,7 @@ const FavoriteButton = (props: FavoriteButtonProps) => {
       {}
     );
 
-    props.markFavorite(response.is_favorite);
+    props.markFavorite(response.is_favorited);
   };
 
   return (
