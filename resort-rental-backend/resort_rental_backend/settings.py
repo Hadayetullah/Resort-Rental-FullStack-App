@@ -97,6 +97,7 @@ INSTALLED_APPS = [
 
     'app_useraccount',
     'app_property',
+    'app_chat',
 ]
 
 MIDDLEWARE = [
