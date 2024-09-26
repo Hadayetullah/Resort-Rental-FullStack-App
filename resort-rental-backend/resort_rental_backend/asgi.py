@@ -19,14 +19,13 @@ from django.core.asgi import get_asgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'resort_rental_backend.settings')
 
-application = get_asgi_application()
+# application = get_asgi_application()
 
 
-# Below part will be commented after creating routing and TokenAuthMiddleware
-# django_asgi_app = get_asgi_application()
+django_asgi_app = get_asgi_application()
 
 
-'''
+
 from app_chat import routing
 from app_chat.token_auth import TokenAuthMiddleware
 
@@ -39,4 +38,4 @@ application = ProtocolTypeRouter(
         ),
     }
 )
-'''
+
