@@ -1,5 +1,5 @@
 import ConversationDetail from "@/app/components/inbox/ConversationDetail";
-import { getUserId } from "@/app/lib/actions";
+import { getAccessToken, getUserId } from "@/app/lib/actions";
 import { UserType } from "../page";
 import apiService from "@/app/services/apiService";
 
@@ -14,8 +14,9 @@ export type MessageType = {
 
 const ConversationPage = async ({ params }: { params: { id: string } }) => {
   const userId = await getUserId();
+  const token = await getAccessToken();
 
-  if (!userId) {
+  if (!userId || !token) {
     return (
       <main className="max-w-[1500px] mx-auto px-6 py-12">
         <p>You need to be authenticated...</p>
@@ -27,7 +28,11 @@ const ConversationPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <main className="max-w-[1500px] mx-auto px-6 pb-6">
-      <ConversationDetail />
+      <ConversationDetail
+        token={token}
+        userId={userId}
+        conversation={conversation.conversation}
+      />
     </main>
   );
 };
