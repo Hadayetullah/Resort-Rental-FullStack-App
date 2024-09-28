@@ -12,12 +12,12 @@ interface ConversationDetailProps {
 }
 
 const ConversationDetail: React.FC<ConversationDetailProps> = ({
-  token,
   userId,
+  token,
   conversation,
 }) => {
-  const myUser = conversation.users.find((user) => user.id == userId);
-  const otherUser = conversation.users.find((user) => user.id != userId);
+  const myUser = conversation.users?.find((user) => user.id == userId);
+  const otherUser = conversation.users?.find((user) => user.id != userId);
 
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
     `ws://127.0.0.1:8000/ws/${conversation.id}/?token=${token}`,
