@@ -28,3 +28,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
+
+    
+    # Receive messages from web sockets
+    async def receive(self, text_data):
+        data = json.loads(text_data)
+
+        conversation_id = data['data']['conversation_id']
+        sent_to_id = data['data']['sent_to_id']
+        name = data['data']['name']
+        body = data['data']['body']
+
+        await self.channel_layer.group_send(self.room_group_name, {
+            'type': 'chat_message',
+            'body': body,
+            'name': name
+        })
