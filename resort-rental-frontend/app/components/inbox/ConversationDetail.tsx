@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "../forms/CustomButton";
 
 import { ConversationType } from "@/app/inbox/page";
@@ -16,6 +16,7 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
   token,
   conversation,
 }) => {
+  const [newMessage, setNewMessage] = useState("");
   const myUser = conversation.users?.find((user) => user.id == userId);
   const otherUser = conversation.users?.find((user) => user.id != userId);
 
@@ -30,6 +31,20 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
   useEffect(() => {
     console.log("Connection state changed", readyState);
   }, [readyState]);
+
+  const sendMessage = async () => {
+    sendJsonMessage({
+      event: "chat_message",
+      data: {
+        body: newMessage,
+        name: myUser?.name,
+        sent_to_id: otherUser?.id,
+        conversation_id: conversation.id,
+      },
+    });
+
+    setNewMessage("");
+  };
 
   return (
     <>
@@ -52,11 +67,13 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
           type="text"
           placeholder="Type your message..."
           className="w-full p-2 bg-gray-200 rounded-xl"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
         />
 
         <CustomButton
           label="Send"
-          onClick={() => console.log("Clicked")}
+          onClick={sendMessage}
           className="w-[100px]"
         />
       </div>
