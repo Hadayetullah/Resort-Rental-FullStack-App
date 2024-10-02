@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CustomButton from "../forms/CustomButton";
 
 import { ConversationType } from "@/app/inbox/page";
@@ -16,6 +16,7 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
   token,
   conversation,
 }) => {
+  const messagesDiv = useRef(null);
   const [newMessage, setNewMessage] = useState("");
   const myUser = conversation.users?.find((user) => user.id == userId);
   const otherUser = conversation.users?.find((user) => user.id != userId);
@@ -44,11 +45,24 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
     });
 
     setNewMessage("");
+
+    setTimeout(() => {
+      scrollToBottom();
+    }, 50);
+  };
+
+  const scrollToBottom = () => {
+    if (messagesDiv.current) {
+      messagesDiv.current.scrollTop = messagesDiv.current.scrollHeight;
+    }
   };
 
   return (
     <>
-      <div className="max-h-[400px] overflw-auto flex flex-col space-y-4">
+      <div
+        ref={messagesDiv}
+        className="max-h-[400px] overflw-auto flex flex-col space-y-4"
+      >
         <div className="w-[80%] py-4 px-6 rounded-xl bg-gray-200">
           <p className="font-bold text-gray-500">John Doe</p>
 
